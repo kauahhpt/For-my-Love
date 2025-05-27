@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz do Amor</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to top left, #ffe4e1, #ffc1cc);
+      color: #880e4f;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin: 40px 0;
+      background: #fff0f5;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255,192,203,0.5);
+    }
+
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background: #f8bbd0;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1em;
+      color: #880e4f;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #f48fb1;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+    }
+     a {
+    margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background: white;
+      border: none;
+      color: #e91e63;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+  </style>
+ 
+</head>
+<body>
+ <audio autoplay loop>
+    <source src="romantic.mp3" type="audio/mpeg" />
+</audio>
+  <h1>💞 Quiz do Nosso Amor 💞</h1>
+
+  <div class="question" id="q1">
+    <p><strong>1. 💝Qual o nosso aniversário de namoro?💝</strong></p>
+    <button onclick="responder(this, true)">21/2</button>
+    <button onclick="responder(this, false)">14/2</button>
+    <button onclick="responder(this, false)">01/3</button>
+  </div>
+
+  <div class="question" id="q2">
+  <p><strong>2. 💝Qual é o meu apelido mais fofo para você?💝</strong></p>
+  <button onclick="responder(this, false)">Minha Neném</button>
+  <button onclick="responder(this, false)">Minha Molena</button>
+  <button onclick="responder(this, true)">Minha Gatinha</button>
+</div>
+
+
+  <div class="question" id="q3">
+    <p><strong>3. 💝Qual foi nosso primeiro filme juntos?💝</strong></p>
+    <button onclick="responder(this, false)">Homem-Aranha</button>
+    <button onclick="responder(this, false)">Meu Malvado Favorito</button>
+    <button onclick="responder(this, true)">Não lembro, fiquei olhando pra você o tempo todo 💖</button>
+  </div>
+
+  <div class="question" id="q4">
+    <p><strong>4. 💝Qual é a sua comida preferida (segundo eu)?💝</strong></p>
+    <button onclick="responder(this, false)">Pizza</button>
+    <button onclick="responder(this, true)">Strogonoff</button>
+    <button onclick="responder(this, false)">Chocolate</button>
+  </div>
+
+  <div class="question" id="q5">
+    <p><strong>5. 💝Se eu pudesse estar em qualquer lugar agora, onde eu estaria?💝</strong></p>
+    <button onclick="responder(this, false)">Dormindo</button>
+    <button onclick="responder(this, false)">Jogando</button>
+    <button onclick="responder(this, true)">Do seu lado, sempre. 💖</button>
+  </div>
+   <a href="Carrossel.html">Proxima página: Carrossel de fotos 💖</a>
+  
+
+  <div class="result" id="resultadoFinal"></div>
+  <script>
+    let pontos = 0;
+    let respondidas = 0;
+
+    function responder(botao, certo) {
+      if (botao.disabled) return;
+
+      const pergunta = botao.parentElement;
+      const botoes = pergunta.querySelectorAll('button');
+
+      botoes.forEach(b => b.disabled = true);
+
+      if (certo) {
+        botao.style.background = "#c8e6c9";
+        pontos++;
+      } else {
+        botao.style.background = "#ff747b";
+      }
+
+      respondidas++;
+
+      if (respondidas === 5) {
+        const resultado = document.getElementById('resultadoFinal');
+        resultado.innerHTML = `✨ Você acertou ${pontos}/5! Mas mesmo se fosse 0, ainda te amaria do mesmo jeito. 💕`;
+      }
+    }
+    
+  </script>
+
+</body>
+</html>
